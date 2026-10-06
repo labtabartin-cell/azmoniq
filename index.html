@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f9ff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>IQNova | آزمایشگاه هوش، منطق و مهارت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#f5f7ff;--surface:rgba(255,255,255,.78);--solid:#fff;--text:#18223d;--muted:#71809e;
+ --line:#e4e9f5;--primary:#5b6cff;--primary2:#8b5cf6;--cyan:#22d3ee;--green:#10b981;--danger:#ef476f;
+ --shadow:0 22px 70px rgba(66,78,140,.13);--shadow2:0 12px 35px rgba(66,78,140,.12);--radius:26px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Vazirmatn","Segoe UI",Tahoma,sans-serif;color:var(--text);background:
+ radial-gradient(circle at 8% 4%,rgba(34,211,238,.13),transparent 26%),
+ radial-gradient(circle at 94% 0,rgba(139,92,246,.13),transparent 28%),var(--bg);min-height:100vh}
+body.dark{--bg:#0c1122;--surface:rgba(21,28,51,.8);--solid:#151c33;--text:#f2f5ff;--muted:#a9b3cc;--line:#2a3555}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.hidden{display:none!important}
+.container{width:min(1180px,calc(100% - 36px));margin:auto}
+.glass{background:var(--surface);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.65);box-shadow:var(--shadow)}
+header{position:sticky;top:0;z-index:50;background:rgba(247,249,255,.76);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.dark header{background:rgba(12,17,34,.76)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900}
+.logo{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;color:white;font-size:25px;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 12px 28px rgba(91,108,255,.32);position:relative}
+.logo:after{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.35);border-radius:12px}.logo img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}.brand-preview{width:76px;height:76px;border-radius:20px;object-fit:cover;border:1px solid var(--line);background:#eef4ff;display:block}.asset-thumb{width:54px;height:54px;border-radius:16px;object-fit:cover;border:1px solid var(--line);background:#eef4ff;display:block}.asset-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}.asset-row:last-child{border-bottom:0}.asset-meta{display:flex;align-items:center;gap:14px}.asset-actions{display:flex;gap:8px;flex-wrap:wrap}
+.brand small{display:block;color:var(--muted);font-size:11px;margin-top:1px;font-weight:600}
+.navlinks{display:flex;gap:5px;align-items:center}
+.navlinks button,.iconbtn{border:0;background:transparent;color:var(--muted);padding:10px 13px;border-radius:12px;font-weight:700}
+.navlinks button:hover,.navlinks button.active,.iconbtn:hover{background:rgba(91,108,255,.09);color:var(--primary)}
+.iconbtn{font-size:19px}
+.hero{padding:78px 0 45px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:50px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid rgba(91,108,255,.16);background:rgba(255,255,255,.7);border-radius:999px;color:var(--primary);font-size:13px;font-weight:800}
+h1{font-size:clamp(38px,5.5vw,70px);line-height:1.12;margin:18px 0 15px;letter-spacing:-2px}
+.gradient{background:linear-gradient(100deg,var(--primary),var(--primary2),#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;line-height:2;color:var(--muted);max-width:690px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{border:0;border-radius:14px;padding:12px 18px;font-weight:800;transition:.22s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(40,50,100,.12)}
+.btn.primary{color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 12px 25px rgba(91,108,255,.22)}
+.btn.secondary{color:var(--text);background:var(--solid);border:1px solid var(--line)}
+.btn.danger{background:#fff0f3;color:var(--danger);border:1px solid #ffd2dc}
+.hero-visual{min-height:440px;position:relative;display:grid;place-items:center}
+.orb{width:280px;height:280px;border-radius:50%;background:radial-gradient(circle at 32% 25%,#fff,rgba(255,255,255,.2) 18%,transparent 21%),linear-gradient(135deg,#7180ff,#9d6cff 55%,#22d3ee);box-shadow:0 35px 90px rgba(91,108,255,.28),inset -22px -22px 50px rgba(30,40,110,.18),inset 18px 18px 45px rgba(255,255,255,.42);position:relative;animation:float 5s ease-in-out infinite}
+.orb:before,.orb:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.42);border-radius:50%;inset:-35px;transform:rotate(25deg)}
+.orb:after{inset:-70px;transform:rotate(-30deg);opacity:.55}
+.brain{font-size:118px;filter:drop-shadow(0 15px 15px rgba(20,30,90,.22));position:relative;z-index:2}
+.floatcard{position:absolute;padding:14px 17px;border-radius:18px;background:rgba(255,255,255,.78);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.75);box-shadow:var(--shadow2);font-weight:800}
+.fc1{top:45px;right:10px}.fc2{bottom:65px;left:0}.fc3{bottom:10px;right:55px}
+@keyframes float{50%{transform:translateY(-12px) rotate(2deg)}}
+.section{padding:55px 0}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
+.sectionhead h2{margin:0;font-size:30px}.sectionhead p{margin:7px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow2)}
+.card:hover{transform:translateY(-3px);transition:.22s}
+.category .icon{font-size:34px;width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,rgba(91,108,255,.12),rgba(34,211,238,.12));margin-bottom:17px}
+.category h3,.test h3{margin:0 0 7px}.muted{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.stat strong{display:block;font-size:31px}.stat span{color:var(--muted);font-size:13px}
+.test{overflow:hidden;position:relative}.cover{height:145px;margin:-22px -22px 18px;display:grid;place-items:center;font-size:55px;background:linear-gradient(135deg,#eef3ff,#f3eefe,#e7fbff)}
+.pill{display:inline-flex;padding:5px 9px;border-radius:999px;background:rgba(91,108,255,.09);color:var(--primary);font-size:11px;font-weight:800}
+.view{display:none}.view.active{display:block}
+.page{padding:45px 0 75px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-weight:800;font-size:13px}
+input,select,textarea{width:100%;border:1px solid var(--line);background:var(--solid);color:var(--text);border-radius:13px;padding:12px 13px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(91,108,255,.09)}
+.modal{position:fixed;inset:0;width:100%;height:100%;box-sizing:border-box;background:rgba(10,16,35,.45);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.modalbox{width:min(780px,calc(100vw - 40px));max-width:100%;min-width:0;max-height:90vh;overflow:auto;background:var(--solid);border:1px solid var(--line);border-radius:28px;padding:25px;box-shadow:0 35px 100px rgba(0,0,0,.2)}
+.close{float:left;border:0;background:transparent;font-size:24px;color:var(--muted)}
+.exambar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}
+.timer{font-weight:900;color:var(--primary);background:rgba(91,108,255,.1);padding:9px 13px;border-radius:12px}
+.progress{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:18px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--cyan));border-radius:99px;width:0}
+.examgrid{display:grid;grid-template-columns:1fr 250px;gap:18px}.options{display:grid;gap:11px;margin-top:22px}.option{padding:16px;text-align:right;border:1px solid var(--line);background:var(--solid);border-radius:15px;color:var(--text);font-weight:700}.option:hover,.option.selected{border-color:var(--primary);background:rgba(91,108,255,.08)}
+.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.qnum{border:1px solid var(--line);background:var(--solid);border-radius:10px;padding:9px}.qnum.current{background:var(--primary);color:white}.qnum.done{border-color:var(--green);color:var(--green)}
+.admin{display:grid;grid-template-columns:230px 1fr;gap:18px}.sidebar{padding:15px;height:max-content;position:sticky;top:95px}.sidebtn{width:100%;text-align:right;border:0;background:transparent;color:var(--muted);padding:12px 14px;border-radius:12px;font-weight:800;margin:2px 0}.sidebtn:hover,.sidebtn.active{background:rgba(91,108,255,.1);color:var(--primary)}
+.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}.table th{color:var(--muted);font-size:12px}
+
+
+.question-image-box{border:1px dashed #cfd7ee;border-radius:18px;padding:14px;background:linear-gradient(180deg,rgba(91,108,255,.04),rgba(34,211,238,.03))}
+.question-image-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.question-image-preview{margin-top:12px;min-height:80px;border-radius:14px;background:var(--bg);display:grid;place-items:center;overflow:hidden}
+.question-image-preview img{max-width:100%;max-height:260px;display:block;border-radius:14px}
+.question-image-empty{padding:15px;color:var(--muted);font-size:13px;text-align:center}
+.exam-question-image{max-width:100%;max-height:340px;object-fit:contain;border-radius:18px;display:block;margin:16px auto;border:1px solid var(--line);background:var(--bg)}
+.test-link-box{margin-top:12px;padding:11px 12px;border-radius:14px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.test-link-box input{flex:1;min-width:240px;font-size:12px}
+.question-select-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;margin:8px 0 10px;border:1px solid var(--line);border-radius:16px;background:rgba(91,108,255,.045)}
+.question-picker{padding:10px;border:1px solid var(--line);border-radius:16px;background:var(--solid)}
+.empty-question{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:13px}
+.question-pick{display:flex!important;align-items:flex-start;gap:10px;padding:12px;border-radius:13px;margin:7px 0!important;background:var(--bg);border:1px solid transparent}
+.question-pick:hover{border-color:#cfd7ff;background:#f7f8ff}
+.question-pick-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;margin-right:auto}.btn-sm{padding:7px 10px!important;font-size:12px!important;white-space:nowrap}
+.answer-panel{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(91,108,255,.035),rgba(25,201,232,.025))}
+.answer-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}
+.option-editor{display:grid;grid-template-columns:28px 1fr 40px;gap:8px;align-items:center;margin:9px 0}
+.option-editor input[type=checkbox],.option-editor input[type=radio]{width:18px;height:18px;justify-self:center}
+.option-input{margin:0}.iconbtn:disabled{opacity:.35;cursor:not-allowed}
+.typehint{margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(91,108,255,.06);color:var(--muted);font-size:12px;line-height:1.9}
+.toast{position:fixed;bottom:22px;left:22px;z-index:200;background:#18223d;color:#fff;padding:13px 17px;border-radius:14px;box-shadow:var(--shadow)}
+footer{padding:35px 0;border-top:1px solid var(--line);color:var(--muted)}
+@media(max-width:900px){.hero{grid-template-columns:1fr;text-align:center}.lead{margin-inline:auto}.actions{justify-content:center}.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.hero-visual{min-height:360px}.admin{grid-template-columns:1fr}.sidebar{position:static}.examgrid{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:900px){
+ body{overflow-x:hidden}
+ .container{width:min(100% - 28px,1180px)}
+ .nav{height:70px;gap:8px}
+ .brand{min-width:0}
+ .brand small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}
+ .hero{grid-template-columns:1fr;padding:48px 0 30px;gap:24px;text-align:center}
+ .lead{margin-inline:auto;max-width:680px}
+ .actions{justify-content:center}
+ .hero-visual{min-height:310px}
+ .orb{width:220px;height:220px}
+ .brain{font-size:88px}
+ .fc1{top:18px;right:2px}.fc2{bottom:35px;left:2px}.fc3{bottom:0;right:35px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .admin{grid-template-columns:1fr}
+ .sidebar{position:static}
+ .examgrid{grid-template-columns:1fr}
+ .navlinks{display:none}
+ .tablewrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .table{min-width:620px}
+ .test-link-box input{min-width:0}
+}
+@media(max-width:600px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden}
+ .container{width:calc(100% - 20px);max-width:none}
+ .nav{height:64px}
+ .brand{gap:8px;padding:0!important}
+ .logo{width:40px;height:40px;border-radius:13px;font-size:21px}
+ .brand b{font-size:15px}
+ .brand small{font-size:9px;max-width:150px}
+ .iconbtn{padding:8px;font-size:18px}
+ .hero{padding:32px 0 20px;gap:10px}
+ .badge{font-size:11px;padding:7px 10px}
+ h1{font-size:clamp(31px,10vw,42px);letter-spacing:-1px;margin:13px 0 10px}
+ .lead{font-size:14px;line-height:1.9}
+ .actions{gap:8px;margin-top:18px}
+ .btn{padding:10px 13px;font-size:13px;border-radius:12px}
+ .hero-visual{min-height:250px}
+ .orb{width:170px;height:170px}
+ .orb:before{inset:-22px}.orb:after{inset:-42px}
+ .brain{font-size:65px}
+ .floatcard{padding:9px 11px;border-radius:13px;font-size:9px}
+ .fc1{top:8px;right:0}.fc2{bottom:25px;left:0}.fc3{bottom:0;right:22px}
+ .section{padding:32px 0}
+ .sectionhead{align-items:flex-start;flex-direction:column;gap:10px;margin-bottom:15px}
+ .sectionhead h2{font-size:24px}
+ .sectionhead p{font-size:12px;line-height:1.8}
+ .grid{grid-template-columns:1fr;gap:11px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card{padding:16px;border-radius:20px}
+ .category .icon{width:50px;height:50px;font-size:28px;border-radius:15px;margin-bottom:12px}
+ .test .cover{height:110px;margin:-16px -16px 14px;font-size:42px}
+ .page{padding:30px 0 55px}
+ .formgrid{grid-template-columns:1fr;gap:11px}
+ .field.full{grid-column:auto}
+ .modal{padding:10px;align-items:center;justify-content:center}
+ .modalbox{width:calc(100vw - 20px);max-width:100%;min-width:0;max-height:94vh;padding:17px;border-radius:20px}
+ .exambar{align-items:flex-start;flex-direction:column;gap:9px}
+ .option{padding:12px;font-size:13px}
+ .qnav{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+ .qnum{padding:7px 4px;font-size:11px}
+ .admin{gap:11px}
+ .sidebar{padding:11px}
+ .sidebtn{padding:10px 11px;font-size:13px}
+ .option-editor{grid-template-columns:24px minmax(0,1fr) 34px;gap:6px}
+ .question-image-preview img{max-height:190px}
+ .exam-question-image{max-height:230px}
+ .test-link-box{align-items:stretch;flex-direction:column}
+ .test-link-box input{width:100%;min-width:0}
+ footer{padding:25px 0;font-size:11px;line-height:1.9}
+}
+@media(max-width:380px){
+ .container{width:calc(100% - 14px)}
+ .stats{grid-template-columns:1fr}
+ .hero{padding-top:24px}
+ .brand small{max-width:125px}
+ .btn{padding:9px 10px;font-size:12px}
+}
+
+/* Results table stays readable on small screens without changing the site design. */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tablewrap .table{min-width:900px}
+</style>
+</head>
+<body>
+<header>
+ <div class="container nav">
+  <button class="brand" data-nav="home" style="border:0;background:none;text-align:right">
+   <span class="logo" id="siteLogo"><span aria-hidden="true">🧠</span></span><span><b>IQNova</b><small>آزمایشگاه هوش، منطق و مهارت</small></span>
+  </button>
+  <nav class="navlinks">
+   <button data-nav="home" class="active">خانه</button><button data-nav="tests">آزمون‌ها</button><button data-nav="results">نتایج من</button><button data-nav="about">درباره</button>
+  </nav>
+  <button class="iconbtn" id="themeBtn" title="حالت شب">☾</button>
+ </div>
+</header>
+
+<main>
+<section id="home" class="view active">
+ <div class="container hero">
+  <div>
+   <span class="badge">✦ تجربه هوشمند و حرفه‌ای</span>
+   <h1>هوش خود را<br><span class="gradient">به چالش بکش</span></h1>
+   <p class="lead">در IQNova مجموعه‌ای از آزمون‌های هوش، منطق، تمرکز، ریاضی و حل مسئله را با یک تجربه مدرن و جذاب انجام بده.</p>
+   <div class="actions"><button class="btn primary" data-nav="tests">مشاهده آزمون‌ها ←</button><button class="btn secondary" data-nav="about">درباره IQNova</button></div>
+  </div>
+  <div class="hero-visual"><div class="orb"><div class="brain">🧠</div></div><div class="floatcard fc1">⚡ تمرکز بالا</div><div class="floatcard fc2">◈ تحلیل منطقی</div><div class="floatcard fc3">✓ نتیجه دقیق</div></div>
+ </div>
+ <div class="container section">
+  <div class="sectionhead"><div><h2>زمینه‌های آزمون</h2><p>مهارت‌های مختلفت را در چند حوزه محک بزن.</p></div></div>
+  <div class="grid" id="categories"></div>
+ </div>
+ <div class="container section">
+  <div class="sectionhead"><div><h2>آزمون‌های منتخب</h2><p>آزمون‌های منتشرشده در دسترس تو هستند.</p></div><button class="btn secondary" data-nav="tests">همه آزمون‌ها</button></div>
+  <div class="grid" id="homeTests"></div>
+ </div>
+ <div class="container section"><div class="stats" id="homeStats"></div></div>
+</section>
+
+<section id="tests" class="view page"><div class="container"><div class="sectionhead"><div><h2>آزمون‌ها</h2><p>آزمون موردنظر را انتخاب و شروع کن.</p></div></div><div class="grid" id="testsGrid"></div></div></section>
+<section id="results" class="view page"><div class="container"><div class="sectionhead"><div><h2>نتایج من</h2><p>نتایج آزمون‌های انجام‌شده روی این مرورگر.</p></div></div><div class="grid" id="resultsGrid"></div></div></section>
+<section id="about" class="view page"><div class="container"><div class="card"><span class="badge">IQNova</span><h1 style="font-size:42px">آزمایشگاه هوش، منطق و مهارت</h1><p class="lead">این پروژه برای ارائه حرفه‌ای طراحی شده و اطلاعات آزمون‌ها و نتایج با احراز هویت و دسترسی کنترل‌شده در Supabase نگهداری می‌شوند.</p><div class="grid"><div class="card"><h3>🎯 تمرکز</h3><p class="muted">آزمون‌های متنوع برای تمرکز و دقت.</p></div><div class="card"><h3>🧩 منطق</h3><p class="muted">سؤال‌های استدلالی و حل مسئله.</p></div><div class="card"><h3>📊 نتیجه</h3><p class="muted">نمایش امتیاز، درصد و وضعیت پاسخ‌ها.</p></div><div class="card"><h3>💾 ذخیره</h3><p class="muted">ذخیره امن اطلاعات در Supabase.</p></div></div></div></div></section>
+
+<section id="admin" class="view page"><div class="container admin"><aside class="card sidebar"><h3 style="margin-top:5px">پنل مدیریت</h3><button class="sidebtn active" data-tab="dashboard">داشبورد</button><button class="sidebtn" data-tab="tests">آزمون‌ها</button><button class="sidebtn" data-tab="questions">بانک سؤال</button><button class="sidebtn" data-tab="participants">شرکت‌کنندگان</button><button class="sidebtn" data-tab="categories">دسته‌بندی‌ها</button><button class="sidebtn" data-tab="settings">تنظیمات</button></aside><div id="adminContent"></div></div></section>
+</main>
+
+<footer><div class="container">IQNova — پروژه مدرسه «کار و فناوری» · طراحی شده برای ارائه حرفه‌ای</div></footer>
+
+<div id="modal" class="modal hidden"><div class="modalbox"><button class="close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+<div id="toast" class="toast hidden"></div>
+<input id="restoreInput" type="file" accept="application/json" class="hidden">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+'use strict';
+
+const KEY='iqnova_secure_v4';
+const SUPABASE_URL='https://wardcoesaoecgixzvelq.supabase.co';
+const SUPABASE_KEY='sb_publishable_vKj0adiNq5ZqqAvI2kl_Fg_nmkqWaGq';
+// This must match the email inserted into public.iqnova_admins in Supabase.
+const ADMIN_EMAIL='admin@iqnova.local';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const DEFAULTS={
+ categories:['هوش و IQ','منطق','ریاضی و عددی','الگوهای تصویری','تمرکز','حل مسئله','اطلاعات عمومی','سرگرمی'],
+ tests:[],questions:[],attempts:[],settings:{theme:'light',brandAssets:{logo:'',categories:{}}},admin:{username:'admin',password:null}
+};
+let db=loadDB(), currentAttempt=null, timer=null, adminAuthed=false, cloudReady=false, cloudSaveTimer=null, authUser=null, booting=true, finalizingAttemptId=null;
+
+function clone(x){return JSON.parse(JSON.stringify(x));}
+function loadDB(){try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');return {...clone(DEFAULTS),...(saved||{}),settings:{...DEFAULTS.settings,...(saved?.settings||{})}};}catch(e){return clone(DEFAULTS);}}
+function cacheDB(){try{localStorage.setItem(KEY,JSON.stringify({...db,admin:{username:'admin',password:null}}));}catch(e){console.warn('local cache failed',e);}}
+function saveDB(){cacheDB();queueCloudSave();return true;}
+function isManager(user=authUser){return !!user&&!user.is_anonymous&&String(user.email||'').toLowerCase()===ADMIN_EMAIL.toLowerCase();}
+function currentUserId(){return authUser?.id||null;}
+function deviceId(){return currentUserId()||'anonymous';}
+function safeQuestion(q){const x=clone(q||{});delete x.correct;delete x.answers;delete x.id;return x;}
+function safeImageUrl(v){const s=String(v??'').trim();if(!s)return '';if(/^https?:\/\//i.test(s))return s;if(/^data:image\/(?:png|jpe?g|gif|webp);base64,/i.test(s))return s;return '';}
+function sanitizeLoadedData(){db.questions.forEach(q=>{q.image=safeImageUrl(q.image);});db.tests.forEach(t=>{t.title=String(t.title||'').trim();t.description=String(t.description||'');t.welcome=String(t.welcome||'');t.rules=String(t.rules||'');});db.settings={...clone(DEFAULTS.settings),...(db.settings||{}),brandAssets:{...clone(DEFAULTS.settings.brandAssets),...(db.settings?.brandAssets||{}),categories:{...(db.settings?.brandAssets?.categories||{})}}};if(typeof db.settings.brandAssets.logo!=='string')db.settings.brandAssets.logo='';Object.keys(db.settings.brandAssets.categories||{}).forEach(k=>{db.settings.brandAssets.categories[k]=safeImageUrl(db.settings.brandAssets.categories[k]);});}
+function safeTest(t){const x=clone(t||{});delete x.id;return x;}
+function contentRows(){
+ const rows=[];
+ db.categories.forEach((name,i)=>rows.push({kind:'category',id:'cat_'+i+'_'+slug(name),data:{name,icon:db.categoryIcons?.[name]||null}}));
+ db.tests.forEach(t=>rows.push({kind:'test',id:t.id,data:safeTest(t)}));
+ db.questions.forEach(q=>rows.push({kind:'question',id:q.id,data:safeQuestion(q)}));
+ rows.push({kind:'settings',id:'main',data:clone(db.settings||{})});
+ return rows;
+}
+function slug(v){return String(v||'').trim().toLowerCase().replace(/[^a-z0-9\u0600-\u06ff]+/g,'_').slice(0,40)||'item';}
+async function ensureParticipantAuth(){
+ const {data}=await sb.auth.getSession();
+ if(data.session?.user){authUser=data.session.user;adminAuthed=isManager();return authUser;}
+ const {data:anon,error}=await sb.auth.signInAnonymously();
+ if(error)throw error;
+ authUser=anon.user;adminAuthed=false;return authUser;
+}
+async function loadRemote(){
+ try{
+   const {data:rows,error}=await sb.from('iqnova_content_secure').select('kind,id,data').order('kind').order('id');
+   if(error)throw error;
+   const cats=rows.filter(r=>r.kind==='category').map(r=>r.data?.name).filter(Boolean);
+   const tests=rows.filter(r=>r.kind==='test').map(r=>({id:r.id,...(r.data||{})}));
+   const questions=rows.filter(r=>r.kind==='question').map(r=>({id:r.id,...(r.data||{})}));
+   const settings=rows.find(r=>r.kind==='settings'&&r.id==='main')?.data||{};
+   db={...clone(DEFAULTS),...db,categories:cats.length?cats:clone(DEFAULTS.categories),tests,questions,settings:{...clone(DEFAULTS.settings),...settings,brandAssets:{...clone(DEFAULTS.settings.brandAssets),...(settings?.brandAssets||{}),categories:{...clone(DEFAULTS.settings.brandAssets.categories),...(settings?.brandAssets?.categories||{})}}},attempts:[]};
+   sanitizeLoadedData();
+   if(isManager()){
+     const [{data:keys,error:ke},{data:attempts,error:ae}]=await Promise.all([
+       sb.from('iqnova_question_keys_secure').select('question_id,correct,answers'),
+       sb.from('iqnova_attempts_secure').select('*').order('started_at',{ascending:false})
+     ]);
+     if(ke)throw ke;if(ae)throw ae;
+     const km=new Map((keys||[]).map(k=>[k.question_id,k]));
+     db.questions.forEach(q=>{const k=km.get(q.id);if(k){q.correct=k.correct;q.answers=k.answers||[];}});
+     db.attempts=(attempts||[]).map(fromAttemptRow);
+   }else{
+     const {data:attempts,error:ae}=await sb.from('iqnova_attempts_secure').select('*').order('started_at',{ascending:false});
+     if(ae)throw ae;
+     db.attempts=(attempts||[]).map(fromAttemptRow);
+   }
+   cacheDB();cloudReady=true;return true;
+ }catch(e){console.error('Supabase load failed',e);cloudReady=false;return false;}
+}
+function fromAttemptRow(r){return {id:r.id,testId:r.test_id,deviceId:r.user_id,first:r.first_name,last:r.last_name,age:r.age,grade:r.grade,notes:r.notes,answers:r.answers||{},index:0,start:new Date(r.started_at).getTime(),completed:r.status==='completed',order:r.question_order||[],completedAt:r.completed_at?new Date(r.completed_at).getTime():null,duration:r.duration_seconds,score:Number(r.score||0),total:Number(r.total||0),autoTotal:Number(r.auto_total||0),percent:Number(r.percent||0),correct:r.correct||0,wrong:r.wrong||0,unanswered:r.unanswered||0,manual:r.manual||0};}
+function toAttemptRow(a){return {id:a.id,user_id:currentUserId(),test_id:a.testId,first_name:String(a.first||'').trim(),last_name:String(a.last||'').trim(),age:a.age?Number(a.age):null,grade:a.grade||null,notes:a.notes||null,answers:a.answers||{},question_order:a.order||[],started_at:new Date(a.start||Date.now()).toISOString(),completed_at:a.completed&&a.completedAt?new Date(a.completedAt).toISOString():null,duration_seconds:a.duration||null,status:a.completed?'completed':'in_progress',score:a.completed?Number(a.score||0):0,total:a.completed?Number(a.total||0):0,auto_total:a.completed?Number(a.autoTotal||0):0,percent:a.completed?Number(a.percent||0):0,correct:a.completed?Number(a.correct||0):0,wrong:a.completed?Number(a.wrong||0):0,unanswered:a.completed?Number(a.unanswered||0):0,manual:a.completed?Number(a.manual||0):0};}
+async function persistAttempt(a){
+ if(!a)return false;
+ if(!authUser?.id){
+   try{await ensureParticipantAuth();}catch(e){console.error('Participant auth unavailable:',e);}
+ }
+ if(!currentUserId())return false;
+ const row=toAttemptRow(a);
+ if(a.completed){
+   // Finalized attempts are written by the server-side RPC only.
+   return true;
+ }
+ try{
+   const {data:existing,error:findError}=await sb
+     .from('iqnova_attempts_secure')
+     .select('id,user_id,status')
+     .eq('id',a.id)
+     .maybeSingle();
+   if(findError)throw findError;
+
+   if(!existing){
+     const {error}=await sb.from('iqnova_attempts_secure').insert(row);
+     if(error)throw error;
+   }else if(existing.user_id===currentUserId() && existing.status==='in_progress'){
+     const {error}=await sb.from('iqnova_attempts_secure').update(row).eq('id',a.id).eq('user_id',currentUserId());
+     if(error)throw error;
+   }else{
+     console.error('Attempt ownership conflict:',existing);
+     toast('این آزمون به نشست دیگری تعلق دارد. لطفاً آزمون را دوباره شروع کن.');
+     return false;
+   }
+   cloudReady=true;
+   return true;
+ }catch(error){
+   console.error('Attempt save failed:',error);
+   toast('ذخیره آزمون روی سرور انجام نشد. اتصال اینترنت و نشست آزمون را بررسی کن.');
+   return false;
+ }
+}
+async function persistContent(){
+ if(!isManager())return false;
+ try{
+   const rows=contentRows().map(r=>({...r,updated_at:new Date().toISOString(),updated_by:currentUserId()}));
+   const {error}=await sb.from('iqnova_content_secure').upsert(rows,{onConflict:'kind,id'});if(error)throw error;
+   const keys=db.questions.map(q=>({question_id:q.id,correct:q.correct??null,answers:q.answers||[],updated_at:new Date().toISOString(),updated_by:currentUserId()}));
+   if(keys.length){const {error:ke}=await sb.from('iqnova_question_keys_secure').upsert(keys,{onConflict:'question_id'});if(ke)throw ke;}
+   const currentIds=new Set(db.questions.map(q=>q.id));
+   const {data:remoteKeys}=await sb.from('iqnova_question_keys_secure').select('question_id');
+   const stale=(remoteKeys||[]).map(x=>x.question_id).filter(id=>!currentIds.has(id));
+   if(stale.length){const {error:de}=await sb.from('iqnova_question_keys_secure').delete().in('question_id',stale);if(de)throw de;}
+   for(const kind of ['category','test','question']){
+     const ids=rows.filter(r=>r.kind===kind).map(r=>r.id);
+     if(ids.length){const {data:remote}=await sb.from('iqnova_content_secure').select('id').eq('kind',kind);const staleContent=(remote||[]).map(x=>x.id).filter(id=>!ids.includes(id));if(staleContent.length){const {error:de}=await sb.from('iqnova_content_secure').delete().eq('kind',kind).in('id',staleContent);if(de)throw de;}}
+     else {const {error:de}=await sb.from('iqnova_content_secure').delete().eq('kind',kind);if(de)throw de;}
+   }
+   cloudReady=true;return true;
+ }catch(e){console.error('Supabase content save failed',e);toast('ذخیره اطلاعات مدیریتی روی سرور انجام نشد.');return false;}
+}
+function queueCloudSave(){
+ clearTimeout(cloudSaveTimer);
+ if(isManager())cloudSaveTimer=setTimeout(()=>persistContent(),350);
+ else if(currentAttempt&&!currentAttempt.completed)cloudSaveTimer=setTimeout(()=>persistAttempt(currentAttempt),350);
+}
+async function initCloud(){
+ try{await ensureParticipantAuth();const ok=await loadRemote();applyTheme();applyBranding();renderHome();renderResults();if(ok)toast(isManager()?'اتصال امن مدیر برقرار شد.':'اتصال امن آزمون‌دهنده برقرار شد.');else toast('اتصال به سرور برقرار نشد؛ لطفاً اینترنت و تنظیمات Supabase را بررسی کن.');}
+ catch(e){console.error(e);toast('احراز هویت Supabase انجام نشد. Anonymous Auth را فعال کن.');}
+ booting=false;
+}
+
+function uid(prefix='id'){return prefix+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,8);}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>el.classList.add('hidden'),2600);}
+
+function showView(id){
+ if(id==='admin'&&!adminAuthed){adminLogin();return;}
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+ const el=document.getElementById(id); if(el) el.classList.add('active');
+ document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(id==='home')renderHome(); if(id==='tests')renderTests(); if(id==='results')renderResults(); if(id==='admin')renderAdmin('dashboard');
+}
+document.addEventListener('click',e=>{
+ const nav=e.target.closest('[data-nav]'); if(nav){e.preventDefault();showView(nav.dataset.nav);return;}
+ const tab=e.target.closest('[data-tab]'); if(tab){renderAdmin(tab.dataset.tab);return;}
+ const action=e.target.closest('[data-action]'); if(action){handleAction(action.dataset.action,action.dataset.id);return;}
+});
+document.getElementById('themeBtn').addEventListener('click',()=>{
+ db.settings.theme=db.settings.theme==='dark'?'light':'dark';applyTheme();saveDB();
+});
+function applyTheme(){document.body.classList.toggle('dark',db.settings.theme==='dark');document.getElementById('themeBtn').textContent=db.settings.theme==='dark'?'☀':'☾';}
+function getCategoryAsset(name){return safeImageUrl(db.settings?.brandAssets?.categories?.[name]||'');}
+function applyBranding(){
+ const logo= safeImageUrl(db.settings?.brandAssets?.logo||'');
+ const el=document.getElementById('siteLogo');
+ if(el) el.innerHTML=logo?`<img src="${esc(logo)}" alt="لوگوی IQNova">`:'<span aria-hidden="true">🧠</span>';
+ let icon=document.getElementById('siteFavicon');
+ if(!icon){icon=document.createElement('link');icon.id='siteFavicon';icon.rel='icon';document.head.appendChild(icon);}
+ if(logo) icon.href=logo;
+}
+applyTheme();
+
+const catIcons=['🧠','🧩','🔢','🔷','🎯','💡','🌐','🎮'];
+
+function testLink(id){
+ const u=new URL(window.location.href);
+ u.search='';
+ u.hash='';
+ u.searchParams.set('test',id);
+ return u.href;
+}
+async function copyText(text){
+ try{
+   await navigator.clipboard.writeText(text);
+   toast('لینک آزمون کپی شد.');
+ }catch(e){
+   const ta=document.createElement('textarea');
+   ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+   document.body.appendChild(ta);ta.select();
+   document.execCommand('copy');ta.remove();
+   toast('لینک آزمون کپی شد.');
+ }
+}
+function openDirectTestLink(id){
+ window.location.href=testLink(id);
+}
+function renderHome(){
+ document.getElementById('categories').innerHTML=db.categories.map((c,i)=>{const img=getCategoryAsset(c);const icon=img?`<img src="${esc(img)}" alt="${esc(c)}" style="width:100%;height:100%;object-fit:contain;border-radius:14px">`:catIcons[i%catIcons.length];return `<div class="card category"><div class="icon">${icon}</div><h3>${esc(c)}</h3><p class="muted">تمرین و سنجش مهارت در ${esc(c)}</p></div>`;}).join('');
+ const pub=db.tests.filter(t=>t.status==='published'&&t.visibility!=='private').slice(0,4);
+ document.getElementById('homeTests').innerHTML=pub.length?pub.map(testCard).join(''):`<div class="card"><h3>هنوز آزمونی منتشر نشده است</h3><p class="muted">از پنل مدیریت اولین آزمون را بساز.</p></div>`;
+ renderStats(document.getElementById('homeStats'));
+}
+function renderTests(){
+ const pub=db.tests.filter(t=>t.status==='published'&&t.visibility!=='private');
+ document.getElementById('testsGrid').innerHTML=pub.length?pub.map(testCard).join(''):`<div class="card"><h3>آزمون منتشرشده‌ای وجود ندارد.</h3><p class="muted">برای ساخت آزمون وارد پنل مدیریت شو.</p></div>`;
+}
+function testCard(t){
+ const img=getCategoryAsset(t.category);
+ const cover=img?`<img src="${esc(img)}" alt="${esc(t.category||'آزمون')}" style="width:100%;height:100%;object-fit:contain">`:'🧠';
+ return `<div class="card test"><div class="cover">${cover}</div><span class="pill">${esc(t.category||'عمومی')}</span><h3>${esc(t.title)}</h3><p class="muted">${esc(t.description||'آزمون هوش و مهارت')}</p><p class="muted">❓ ${t.questionIds?.length||0} سؤال · ⏱ ${t.duration||0} دقیقه · ${esc(t.difficulty||'متوسط')}</p><button class="btn primary" data-action="openTest" data-id="${esc(t.id)}">شروع آزمون</button></div>`;
+}
+function renderStats(el){
+ const pub=db.tests.filter(t=>t.status==='published').length;
+ const avg=db.attempts.length?Math.round(db.attempts.reduce((s,a)=>s+(Number(a.percent)||0),0)/db.attempts.length):0;
+ el.innerHTML=`<div class="card stat"><strong>${db.tests.length}</strong><span>کل آزمون‌ها</span></div><div class="card stat"><strong>${pub}</strong><span>منتشرشده</span></div><div class="card stat"><strong>${db.attempts.length}</strong><span>تلاش‌ها</span></div><div class="card stat"><strong>${avg}%</strong><span>میانگین درصد</span></div>`;
+}
+function renderResults(){
+ const arr=db.attempts.filter(a=>a.deviceId===deviceId()&&a.completed);
+ document.getElementById('resultsGrid').innerHTML=arr.length?arr.map(a=>{
+   const t=db.tests.find(x=>x.id===a.testId);
+   if(t?.showResult===false){
+     return `<div class="card"><span class="pill">${esc(t?.title||'آزمون')}</span><h3 style="margin-top:14px">آزمون ثبت شد ✓</h3><p class="muted">نتیجه این آزمون توسط مدیر بررسی خواهد شد و فعلاً برای شما نمایش داده نمی‌شود.</p><p class="muted">${new Date(a.start).toLocaleString('fa-IR')}</p></div>`;
+   }
+   return `<div class="card"><span class="pill">${esc(t?.title||'آزمون')}</span><h2 class="gradient">${a.percent}%</h2><p class="muted">${a.correct} صحیح · ${a.wrong} غلط · ${a.unanswered} بی‌پاسخ</p><p class="muted">${new Date(a.start).toLocaleString('fa-IR')}</p><button class="btn secondary" data-action="result" data-id="${a.id}">مشاهده نتیجه</button></div>`;
+ }).join(''):`<div class="card"><h3>هنوز نتیجه‌ای ثبت نشده است.</h3><p class="muted">بعد از شرکت در آزمون، نتیجه اینجا نمایش داده می‌شود.</p></div>`;
+}
+
+function openModal(content){document.getElementById('modalContent').innerHTML=content;document.getElementById('modal').classList.remove('hidden');}
+function closeModal(){document.getElementById('modal').classList.add('hidden');}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+
+function handleAction(action,id){
+ if(action==='openTest')openTest(id);
+ if(action==='result')showResult(id);
+ if(action==='editTest')editTest(id);
+ if(action==='testResults')showTestResults(id);
+ if(action==='attemptDetails')showAttemptDetails(id);
+ if(action==='exportExcel')exportTestExcel(id);
+ if(action==='exportCSV')exportTestCSV(id);
+ if(action==='newTest')editTest(null);
+ if(action==='publish')togglePublish(id);
+ if(action==='duplicate')duplicateTest(id);
+ if(action==='deleteTest')deleteTest(id);
+ if(action==='deleteQuestion')deleteQuestion(id);
+ if(action==='newQuestion')editQuestion(null);
+ if(action==='editQuestion')editQuestion(id);
+ if(action==='copyLink')copyText(testLink(id));
+ if(action==='openLink')openDirectTestLink(id);
+ if(action==='category')addCategory();
+ if(action==='editCategory')editCategory(Number(id));
+ if(action==='deleteCategory')deleteCategory(Number(id));
+ if(action==='logout')adminLogout();
+ if(action==='backup')backup();
+ if(action==='restore')document.getElementById('restoreInput').click();
+ if(action==='password')changePassword();
+ if(action==='adminLogin')adminLogin();
+}
+
+function openTest(id){
+ const t=db.tests.find(x=>x.id===id);if(!t)return;
+ if(t.status!=='published'){toast('این آزمون هنوز منتشر نشده است.');return;}
+ const did=deviceId();
+ const unfinished=db.attempts.find(a=>a.testId===id&&a.deviceId===did&&!a.completed);
+ const completed=db.attempts.find(a=>a.testId===id&&a.deviceId===did&&a.completed);
+ if(completed&&!t.multiple){toast('این آزمون قبلاً روی این دستگاه انجام شده است.');return;}
+ openModal(`<h2>${esc(t.title)}</h2><p class="lead">${esc(t.welcome||'خوش آمدید! برای شروع آماده شوید.')}</p>
+ <div class="test-link-box"><b>لینک این آزمون:</b><input readonly value="${esc(testLink(t.id))}"><button type="button" class="btn secondary" data-action="copyLink" data-id="${esc(t.id)}">📋 کپی</button></div>
+ <div class="stats"><div class="card stat"><strong>${t.questionIds.length}</strong><span>سؤال</span></div><div class="card stat"><strong>${t.duration||0}</strong><span>دقیقه</span></div><div class="card stat"><strong>${esc(t.difficulty||'متوسط')}</strong><span>سطح</span></div><div class="card stat"><strong>${t.multiple?'∞':'1'}</strong><span>تلاش</span></div></div>
+ <div class="card" style="margin-top:15px"><b>قوانین آزمون</b><p class="muted">${esc(t.rules||'پاسخ‌ها را با دقت انتخاب کنید. پاسخ‌ها ذخیره می‌شوند.')}</p></div>
+ <form id="participantForm" style="margin-top:18px"><div class="formgrid">
+ <div class="field"><label>نام *</label><input name="first" required></div><div class="field"><label>نام خانوادگی *</label><input name="last" required></div>
+ <div class="field"><label>سن *</label><input name="age" type="number" min="5" max="100" required></div><div class="field"><label>پایه تحصیلی</label><input name="grade"></div>
+ <div class="field full"><label>توضیحات</label><textarea name="notes" rows="2"></textarea></div></div>
+ <button class="btn primary" style="margin-top:18px">${unfinished?'ادامه آزمون':'شروع آزمون'} ←</button></form>`);
+ document.getElementById('participantForm').addEventListener('submit',e=>startAttempt(e,t.id));
+}
+
+let lastAttemptSubmitAt=0;
+async function startAttempt(e,testId){
+ e.preventDefault();
+ if(Date.now()-lastAttemptSubmitAt<3000){toast('لطفاً چند ثانیه صبر کن و دوباره تلاش کن.');return;}
+ lastAttemptSubmitAt=Date.now();
+ if(!authUser?.id){toast('احراز هویت آزمون‌دهنده آماده نیست.');return;}
+ const t=db.tests.find(x=>x.id===testId),f=new FormData(e.target),did=deviceId();
+ const now=Date.now();
+ let a=db.attempts.find(x=>x.testId===testId&&x.deviceId===did&&!x.completed);
+ if(!a){
+   let order=[...t.questionIds];if(t.randomQuestions)order.sort(()=>Math.random()-.5);
+   a={id:uid('attempt'),testId,deviceId:did,first:String(f.get('first')||'').trim(),last:String(f.get('last')||'').trim(),age:f.get('age'),grade:String(f.get('grade')||'').trim(),notes:String(f.get('notes')||'').trim(),answers:{},index:0,start:now,completed:false,order};
+   db.attempts.unshift(a);await persistAttempt(a);
+ }else{a.first=String(f.get('first')||'').trim();a.last=String(f.get('last')||'').trim();a.age=f.get('age');a.grade=String(f.get('grade')||'').trim();a.notes=String(f.get('notes')||'').trim();await persistAttempt(a);}
+ cacheDB();closeModal();runExam(a.id);
+}
+function runExam(aid){
+ currentAttempt=db.attempts.find(a=>a.id===aid);const t=db.tests.find(x=>x.id===currentAttempt.testId);
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('tests').classList.add('active');
+ document.getElementById('tests').innerHTML=`<div class="container page"><div class="exambar"><b>${esc(t.title)}</b><span class="timer" id="timer">--:--</span></div><div class="progress"><i id="progressFill"></i></div><div class="examgrid"><div id="questionArea"></div><aside class="card"><h3>شماره سؤال</h3><div class="qnav" id="qnav"></div></aside></div></div>`;
+ renderQuestion();startTimer();
+}
+function startTimer(){
+ clearInterval(timer);const t=db.tests.find(x=>x.id===currentAttempt.testId);
+ if(!t.duration){document.getElementById('timer').textContent='بدون محدودیت';return;}
+ const end=currentAttempt.start+t.duration*60000;
+ const tick=()=>{const sec=Math.max(0,Math.floor((end-Date.now())/1000));const el=document.getElementById('timer');if(el)el.textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');if(sec<=0){clearInterval(timer);finishAttempt(true);}};
+ tick();timer=setInterval(tick,1000);
+}
+function renderQuestion(){
+ const t=db.tests.find(x=>x.id===currentAttempt.testId),q=db.questions.find(x=>x.id===currentAttempt.order[currentAttempt.index]);
+ if(!q){finishAttempt(false);return;}
+ document.getElementById('progressFill').style.width=((currentAttempt.index+1)/currentAttempt.order.length*100)+'%';
+ document.getElementById('qnav').innerHTML=currentAttempt.order.map((id,i)=>`<button class="qnum ${i===currentAttempt.index?'current ':''}${currentAttempt.answers[id]!==undefined?'done':''}" data-q="${i}">${i+1}</button>`).join('');
+ let body='';
+ if(q.type==='essay'||q.type==='descriptive') body=`<textarea id="freeAnswer" rows="7" placeholder="پاسخ تشریحی خود را بنویسید...">${esc(currentAttempt.answers[q.id]||'')}</textarea><div class="typehint">این سؤال پس از ثبت، نیاز به بررسی و نمره‌دهی دستی مدیر دارد.</div>`;
+ else if(q.type==='short') body=`<input id="freeAnswer" value="${esc(currentAttempt.answers[q.id]??'')}" placeholder="پاسخ کوتاه را وارد کنید.">`;
+ else{
+   const opts=q.type==='truefalse'?['صحیح','غلط']:(q.options||[]);
+   const selected=Array.isArray(currentAttempt.answers[q.id])?currentAttempt.answers[q.id]:[currentAttempt.answers[q.id]];
+   body=`<div class="options">${opts.map((o,i)=>`<button type="button" class="option ${selected.includes(i)?'selected':''}" data-option="${i}">${esc(o)}</button>`).join('')}</div>${q.type==='multimcq'?'<div class="typehint">می‌توانید بیش از یک گزینه را انتخاب کنید.</div>':''}`;
+ }
+ document.getElementById('questionArea').innerHTML=`<div class="card"><span class="pill">سؤال ${currentAttempt.index+1} از ${currentAttempt.order.length}</span><h2 style="margin-top:17px">${esc(q.text)}</h2>${q.image?`<img src="${esc(q.image)}" alt="تصویر سؤال" class="exam-question-image">`:''}${body}<div class="actions"><button class="btn secondary" id="prevQ" ${currentAttempt.index===0?'disabled':''}>قبلی</button>${currentAttempt.index<currentAttempt.order.length-1?'<button class="btn primary" id="nextQ">بعدی</button>':'<button class="btn primary" id="finishQ">ثبت و پایان</button>'}</div></div>`;
+ document.querySelectorAll('[data-option]').forEach(b=>b.addEventListener('click',()=>{
+   const i=Number(b.dataset.option);
+   if(q.type==='multimcq'){
+     let arr=Array.isArray(currentAttempt.answers[q.id])?currentAttempt.answers[q.id]:[];
+     arr=arr.includes(i)?arr.filter(x=>x!==i):[...arr,i];
+     currentAttempt.answers[q.id]=arr.sort((a,b)=>a-b);
+   }else currentAttempt.answers[q.id]=i;
+   saveDB();renderQuestion();
+ }));
+ const free=document.getElementById('freeAnswer');if(free)free.addEventListener('input',()=>{currentAttempt.answers[q.id]=free.value;saveDB();});
+ document.getElementById('prevQ').addEventListener('click',()=>{if(currentAttempt.index>0){currentAttempt.index--;saveDB();renderQuestion();}});
+ const next=document.getElementById('nextQ');if(next)next.addEventListener('click',()=>{currentAttempt.index++;saveDB();renderQuestion();});
+ const fin=document.getElementById('finishQ');if(fin)fin.addEventListener('click',async()=>{if(finalizingAttemptId)return;fin.disabled=true;fin.textContent='در حال ثبت...';await finishAttempt(false);if(document.body.contains(fin)){fin.disabled=false;fin.textContent='ثبت و پایان';}});
+ document.querySelectorAll('#qnav .qnum').forEach(b=>b.addEventListener('click',()=>{currentAttempt.index=Number(b.dataset.q);saveDB();renderQuestion();}));
+}
+async function finishAttempt(auto){
+  if(!currentAttempt||currentAttempt.completed)return;
+  if(finalizingAttemptId===currentAttempt.id)return;
+  finalizingAttemptId=currentAttempt.id;
+  clearInterval(timer);
+  try{
+    // نشست واقعی Supabase را درست قبل از ثبت نهایی دوباره می‌خوانیم.
+    let sessionData=null;
+    try{
+      const sessionResult=await sb.auth.getSession();
+      sessionData=sessionResult.data?.session||null;
+    }catch(e){console.error('Session check failed:',e);}
+    if(sessionData?.user){
+      authUser=sessionData.user;
+      adminAuthed=isManager();
+    }else if(!authUser?.id){
+      try{await ensureParticipantAuth();}catch(e){console.error('Participant auth refresh failed:',e);}
+    }
+    if(!authUser?.id){toast('شناسه امن آزمون‌دهنده آماده نیست. لطفاً صفحه را یک‌بار تازه‌سازی کن.');return;}
+
+    currentAttempt.duration=Math.round((Date.now()-currentAttempt.start)/1000);
+
+    // ابتدا مطمئن می‌شویم همین attempt متعلق به همین نشست است و واقعاً روی سرور وجود دارد.
+    const saved=await persistAttempt(currentAttempt);
+    if(!saved)return;
+
+    // RPC سمت سرور امتیازدهی و نهایی‌سازی را انجام می‌دهد.
+    let result=await sb.rpc('iqnova_finalize_attempt',{p_attempt_id:currentAttempt.id});
+    if(result.error){
+      console.error('Finalize attempt failed:',result.error);
+      // یک بار نشست را تازه می‌کنیم و دوباره تلاش می‌کنیم؛ این حالت خطای انقضای session را هم پوشش می‌دهد.
+      const refreshed=await sb.auth.getSession();
+      if(refreshed.data?.session?.user){
+        authUser=refreshed.data.session.user;
+        result=await sb.rpc('iqnova_finalize_attempt',{p_attempt_id:currentAttempt.id});
+      }
+    }
+
+    if(result.error||!result.data){
+      console.error('Finalize attempt failed:',result.error||'RPC returned no data');
+      // اگر RPC قبلاً موفق شده ولی پاسخ در مسیر گم شده باشد، نتیجه تکمیل‌شده را بازیابی می‌کنیم.
+      try{
+        const {data:recovered,error:recoverError}=await sb
+          .from('iqnova_attempts_secure')
+          .select('*')
+          .eq('id',currentAttempt.id)
+          .eq('user_id',authUser.id)
+          .maybeSingle();
+        if(!recoverError && recovered?.status==='completed'){
+          currentAttempt=fromAttemptRow(recovered);
+          db.attempts=[currentAttempt,...db.attempts.filter(x=>x.id!==currentAttempt.id)];
+          cacheDB();
+          const recoveredTest=db.tests.find(x=>x.id===currentAttempt.testId);
+          if(recoveredTest?.showResult!==false)showResult(currentAttempt.id);else showPendingResult(currentAttempt.id);
+          return;
+        }
+      }catch(recoverErr){console.error('Finalize recovery failed:',recoverErr);}
+      toast('ثبت نهایی آزمون انجام نشد. پاسخ‌ها حفظ شدند؛ دوباره تلاش کن.');
+      return;
+    }
+
+    const resultRow=Array.isArray(result.data)?result.data[0]:result.data;
+    if(!resultRow){toast('نتیجه نهایی از سرور دریافت نشد؛ پاسخ‌ها حفظ شدند.');return;}
+
+    currentAttempt=fromAttemptRow(resultRow);
+    db.attempts=[currentAttempt,...db.attempts.filter(x=>x.id!==currentAttempt.id)];
+    cacheDB();
+    const t=db.tests.find(x=>x.id===currentAttempt.testId);
+    if(t?.showResult!==false)showResult(currentAttempt.id);else showPendingResult(currentAttempt.id);
+  }finally{
+    finalizingAttemptId=null;
+  }
+}
+function showPendingResult(aid){
+ const a=db.attempts.find(x=>x.id===aid),t=db.tests.find(x=>x.id===a?.testId);
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+ const testsView=document.getElementById('tests');
+ testsView.classList.add('active');
+ testsView.innerHTML=`<div class="container page"><div class="card" id="pendingResultCard">
+   <span class="badge">آزمون ثبت شد ✓</span>
+   <h1 style="font-size:42px">پاسخ شما با موفقیت ثبت شد</h1>
+   <p class="lead">آزمون «${esc(t?.title||'آزمون')}» با موفقیت ارسال شد.</p>
+   <p class="muted" style="font-size:16px;line-height:2">نتیجه این آزمون توسط مدیر بررسی خواهد شد و فعلاً نمایش داده نمی‌شود.</p>
+   <div class="actions">
+     <button class="btn secondary" id="pendingBackBtn">بازگشت به آزمون‌ها</button>
+   </div>
+ </div></div>`;
+ document.getElementById('pendingBackBtn').addEventListener('click',()=>showView('tests'));
+}
+
+function showResult(aid){
+ const a=db.attempts.find(x=>x.id===aid),t=db.tests.find(x=>x.id===a.testId);
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('tests').classList.add('active');
+ document.getElementById('tests').innerHTML=`<div class="container page"><div class="card" id="printCard"><span class="badge">نتیجه آزمون</span><h1 class="gradient">${a.percent}%</h1><p class="lead">${esc(a.first)} ${esc(a.last)} · ${esc(t.title)}</p><div class="stats"><div class="card stat"><strong>${a.score}</strong><span>امتیاز</span></div><div class="card stat"><strong>${a.correct}</strong><span>صحیح</span></div><div class="card stat"><strong>${a.wrong}</strong><span>غلط</span></div><div class="card stat"><strong>${a.unanswered}</strong><span>بی‌پاسخ</span></div></div><div class="actions"><button class="btn primary" id="printBtn">چاپ / PDF</button><button class="btn secondary" id="resultsBtn">بازگشت به نتایج</button></div></div></div>`;
+ document.getElementById('printBtn').addEventListener('click',()=>window.print());
+ document.getElementById('resultsBtn').addEventListener('click',()=>showView('results'));
+}
+
+async function adminLogin(){
+ if(booting){toast('در حال آماده‌سازی اتصال امن...');return;}
+ openModal(`<h2>ورود به پنل مدیریت</h2><p class="muted">ورود با Supabase Auth انجام می‌شود.</p><form id="adminForm"><div class="field"><label>ایمیل مدیر</label><input name="email" type="email" required autocomplete="username" value="${esc(ADMIN_EMAIL)}"></div><div class="field" style="margin-top:12px"><label>رمز عبور</label><input name="p" type="password" required autocomplete="current-password"></div><button class="btn primary" style="margin-top:18px">ورود</button></form>`);
+ document.getElementById('adminForm').addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);const email=String(f.get('email')||'').trim().toLowerCase();if(email!==ADMIN_EMAIL.toLowerCase()){toast('این ایمیل مدیر مجاز نیست.');return;}const {data,error}=await sb.auth.signInWithPassword({email,password:String(f.get('p')||'')});if(error){toast('ایمیل یا رمز عبور اشتباه است.');return;}authUser=data.user;adminAuthed=isManager();if(!adminAuthed){toast('این حساب مدیر نیست.');return;}await loadRemote();closeModal();showView('admin');toast('ورود امن مدیر موفق بود.');});
+}
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==='q'){e.preventDefault();adminLogin();}});
+sb.auth.onAuthStateChange(async (_event,session)=>{authUser=session?.user||null;adminAuthed=isManager();if(authUser&&!booting){await loadRemote();applyBranding();renderHome();renderTests();if(!adminAuthed&&document.getElementById('admin').classList.contains('active'))showView('home');}});
+async function adminLogout(){await sb.auth.signOut();authUser=null;adminAuthed=false;try{await ensureParticipantAuth();await loadRemote();}catch(e){}showView('home');toast('از پنل مدیریت خارج شدی.');}
+
+
+async function uploadBrandAsset(assetKey,file){
+ if(!isManager()){toast('فقط مدیر می‌تواند تصویر سایت را تغییر دهد.');return;}
+ if(!file||!/^image\/(png|jpeg|gif|webp)$/i.test(file.type)){toast('فقط PNG، JPG، GIF یا WEBP مجاز است.');return;}
+ if(file.size>5*1024*1024){toast('حجم تصویر باید حداکثر ۵ مگابایت باشد.');return;}
+ try{
+   const ext=(file.type.split('/')[1]||'png').replace('jpeg','jpg');
+   const path=assetKey==='logo'?'branding/logo':`branding/category-${slug(assetKey)}`;
+   const filePath=`${path}.${ext}`;
+   const {error}=await sb.storage.from('iqnova-assets').upload(filePath,file,{upsert:true,contentType:file.type,cacheControl:'3600'});
+   if(error)throw error;
+   const {data}=sb.storage.from('iqnova-assets').getPublicUrl(filePath);
+   const url=data?.publicUrl||'';
+   if(assetKey==='logo')db.settings.brandAssets.logo=url;
+   else db.settings.brandAssets.categories[assetKey]=url;
+   sanitizeLoadedData();saveDB();applyBranding();renderHome();renderTests();renderAdmin('settings');toast('تصویر با موفقیت ذخیره شد.');
+ }catch(e){console.error(e);toast('آپلود تصویر انجام نشد. بررسی کن Storage و دسترسی مدیر فعال باشد.');}
+}
+function removeBrandAsset(assetKey){
+ if(assetKey==='logo')db.settings.brandAssets.logo='';
+ else delete db.settings.brandAssets.categories[assetKey];
+ saveDB();applyBranding();renderHome();renderTests();renderAdmin('settings');toast('تصویر به حالت پیش‌فرض برگشت.');
+}
+function bindBrandAssetInputs(){
+ document.querySelectorAll('[data-brand-file]').forEach(input=>input.addEventListener('change',async e=>{const key=e.target.dataset.brandFile;await uploadBrandAsset(key,e.target.files?.[0]);e.target.value='';}));
+ document.querySelectorAll('[data-brand-remove]').forEach(btn=>btn.addEventListener('click',()=>removeBrandAsset(btn.dataset.brandRemove)));
+}
+
+function renderAdmin(tab='dashboard'){
+ if(!adminAuthed)return;
+ document.querySelectorAll('.sidebtn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+ const c=document.getElementById('adminContent');
+ if(tab==='dashboard'){
+  c.innerHTML=`<div class="sectionhead"><div><h2>داشبورد</h2><p>نمای کلی اطلاعات ذخیره‌شده در این مرورگر.</p></div></div><div class="grid" id="admStats"></div><div class="card" style="margin-top:18px"><h3>آخرین شرکت‌کنندگان</h3><div class="tablewrap" id="latest"></div></div>`;
+  renderStats(document.getElementById('admStats'));const arr=[...db.attempts].sort((a,b)=>b.start-a.start).slice(0,8);
+  document.getElementById('latest').innerHTML=arr.length?`<table class="table"><tr><th>نام</th><th>آزمون</th><th>تاریخ</th><th>درصد</th></tr>${arr.map(a=>`<tr><td>${esc(a.first)} ${esc(a.last)}</td><td>${esc(db.tests.find(t=>t.id===a.testId)?.title||'')}</td><td>${new Date(a.start).toLocaleString('fa-IR')}</td><td>${a.percent??'-'}%</td></tr>`).join('')}</table>`:'داده‌ای ثبت نشده است.';
+ }
+ if(tab==='tests'){
+  c.innerHTML=`<div class="sectionhead"><div><h2>مدیریت آزمون‌ها</h2><p>ساخت، ویرایش، تکثیر، انتشار و دریافت لینک مستقیم.</p></div><button class="btn primary" data-action="newTest">+ آزمون جدید</button></div>`+(db.tests.length?db.tests.map(t=>`<div class="card" style="margin:12px 0">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap">
+    <div><h3>${esc(t.title)}</h3><span class="pill">${esc(t.status)}</span> <span class="muted">${t.questionIds.length} سؤال · ${esc(t.category)}</span></div>
+    <div class="actions" style="margin:0">
+      <button class="btn secondary" data-action="editTest" data-id="${t.id}">ویرایش</button>
+      <button class="btn secondary" data-action="testResults" data-id="${t.id}">📊 نتایج</button>
+      <button class="btn secondary" data-action="duplicate" data-id="${t.id}">تکثیر</button>
+      <button class="btn danger" data-action="deleteTest" data-id="${t.id}">حذف</button>
+      <button class="btn primary" data-action="publish" data-id="${t.id}">${t.status==='published'?'لغو انتشار':'انتشار'}</button>
+    </div>
+  </div>
+  <div class="test-link-box">
+    <b>لینک آزمون:</b>
+    <input readonly value="${esc(testLink(t.id))}">
+    <button class="btn secondary" data-action="copyLink" data-id="${t.id}">📋 کپی لینک</button>
+    <button class="btn secondary" data-action="openLink" data-id="${t.id}">↗ باز کردن</button>
+  </div>
+</div>`).join(''):'<div class="card">هیچ آزمونی ساخته نشده است.</div>');
+ }
+ if(tab==='questions'){
+  c.innerHTML=`<div class="sectionhead"><div><h2>بانک سؤال</h2><p>سؤال‌ها را بساز و در آزمون‌ها استفاده کن.</p></div><button class="btn primary" data-action="newQuestion">+ سؤال جدید</button></div>`+(db.questions.length?db.questions.map(q=>`<div class="card" style="margin:12px 0"><h3>${esc(q.text)}</h3><p class="muted">${esc(q.type)} · ${esc(q.difficulty)} · ${q.score} امتیاز</p><button class="btn secondary" data-action="editQuestion" data-id="${q.id}">ویرایش</button><button class="btn danger" data-action="deleteQuestion" data-id="${q.id}">حذف</button></div>`).join(''):'<div class="card">بانک سؤال خالی است.</div>');
+ }
+ if(tab==='participants'){
+  c.innerHTML=`<div class="sectionhead"><div><h2>شرکت‌کنندگان</h2><p>تمام تلاش‌های ثبت‌شده.</p></div><button class="btn primary" data-action="backup">پشتیبان‌گیری</button></div><div class="card"><input id="participantSearch" placeholder="جستجوی نام یا آزمون..."><div class="tablewrap" style="margin-top:15px"><table class="table" id="participantsTable"><tr><th>نام</th><th>آزمون</th><th>تاریخ</th><th>وضعیت</th><th>درصد</th></tr>${db.attempts.map(a=>`<tr><td>${esc(a.first)} ${esc(a.last)}</td><td>${esc(db.tests.find(t=>t.id===a.testId)?.title||'')}</td><td>${new Date(a.start).toLocaleString('fa-IR')}</td><td>${a.completed?'تکمیل‌شده':'درحال انجام'}</td><td>${a.percent??'-'}%</td></tr>`).join('')}</table></div></div>`;
+  document.getElementById('participantSearch').addEventListener('input',e=>{const s=e.target.value.toLowerCase();document.querySelectorAll('#participantsTable tr:not(:first-child)').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(s)?'':'none');});
+ }
+ if(tab==='categories'){
+  c.innerHTML=`<div class="sectionhead"><div><h2>دسته‌بندی‌ها</h2><p>گروه‌های آزمون را مدیریت کن.</p></div><button class="btn primary" data-action="category">+ دسته جدید</button></div><div class="grid">${db.categories.map((x,i)=>`<div class="card"><b>${esc(x)}</b><div class="actions" style="margin-top:12px"><button class="btn secondary" data-action="editCategory" data-id="${i}">ویرایش</button><button class="btn danger" data-action="deleteCategory" data-id="${i}">حذف</button></div></div>`).join('')}</div>`;
+ }
+ if(tab==='settings'){
+  const logo=db.settings?.brandAssets?.logo||'';
+  const assetRows=[`<div class="asset-row"><div class="asset-meta">${logo?`<img class="asset-thumb" src="${esc(logo)}" alt="لوگو">`:'<div class="asset-thumb" style="display:grid;place-items:center;font-size:26px">🧠</div>'}<div><b>لوگوی اصلی سایت</b><div class="muted">لوگوی هدر و آیکون سایت</div></div></div><div class="asset-actions"><label class="btn secondary" style="cursor:pointer">تغییر تصویر<input type="file" accept="image/png,image/jpeg,image/gif,image/webp" data-brand-file="logo" hidden></label>${logo?'<button class="btn danger" data-brand-remove="logo">بازنشانی</button>':''}</div></div>`, ...db.categories.map((name,i)=>{const url=getCategoryAsset(name);const fallback=catIcons[i%catIcons.length];return `<div class="asset-row"><div class="asset-meta">${url?`<img class="asset-thumb" src="${esc(url)}" alt="${esc(name)}">`:`<div class="asset-thumb" style="display:grid;place-items:center;font-size:26px">${fallback}</div>`}<div><b>آیکون ${esc(name)}</b><div class="muted">در صفحه اصلی و کارت آزمون‌های این دسته</div></div></div><div class="asset-actions"><label class="btn secondary" style="cursor:pointer">تغییر تصویر<input type="file" accept="image/png,image/jpeg,image/gif,image/webp" data-brand-file="${esc(name)}" hidden></label>${url?`<button class="btn danger" data-brand-remove="${esc(name)}">بازنشانی</button>`:''}</div></div>`;})];
+  c.innerHTML=`<div class="sectionhead"><div><h2>تنظیمات</h2><p>پشتیبان، امنیت و ظاهر سایت.</p></div></div><div class="card"><div class="actions"><button class="btn primary" data-action="backup">Export / Backup</button><button class="btn secondary" data-action="restore">Import / Restore</button><button class="btn secondary" data-action="password">تغییر رمز مدیر</button><button class="btn danger" data-action="logout">خروج از پنل</button></div><p class="muted" style="margin-top:18px">احراز هویت مدیر با Supabase Auth انجام می‌شود؛ LocalStorage فقط کش موقت است و منبع اصلی داده‌ها Supabase است.</p></div><div class="card" style="margin-top:18px"><h3>🎨 مدیریت لوگو و آیکون‌ها</h3><p class="muted">تصاویر در Supabase Storage ذخیره می‌شوند و بعد از تغییر، برای همه بازدیدکنندگان سایت نمایش داده می‌شوند.</p>${assetRows.join('')}</div>`;
+  bindBrandAssetInputs();
+ }
+}
+function testResultRows(testId){
+ const attempts=db.attempts.filter(a=>a.testId===testId&&a.completed).sort((a,b)=>{
+   const pa=Number(a.percent)||0,pb=Number(b.percent)||0;
+   if(pb!==pa)return pb-pa;
+   const sa=Number(a.score)||0,sb=Number(b.score)||0;
+   if(sb!==sa)return sb-sa;
+   return Number(a.start||0)-Number(b.start||0);
+ });
+ return attempts;
+}
+function resultStatus(a){
+ const t=db.tests.find(x=>x.id===a.testId);
+ return t?.showResult===false?'بررسی مدیر':'نهایی';
+}
+function resultData(testId){
+ const t=db.tests.find(x=>x.id===testId);
+ return testResultRows(testId).map((a,i)=>({
+   'رتبه':i+1,
+   'نام':`${a.first||''} ${a.last||''}`.trim(),
+   'سن':a.age??'',
+   'پایه':a.grade??'',
+   'امتیاز':a.score??0,
+   'از':a.autoTotal??a.total??0,
+   'درصد':a.percent??0,
+   'صحیح':a.correct??0,
+   'غلط':a.wrong??0,
+   'بی‌پاسخ':a.unanswered??0,
+   'تشریحی':a.manual??0,
+   'مدت (ثانیه)':a.duration??'',
+   'وضعیت':resultStatus(a),
+   'تاریخ':new Date(a.start).toLocaleString('fa-IR')
+ }));
+}
+function csvEscape(v){
+ const s=String(v??'');
+ return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;
+}
+function exportTestCSV(testId){
+ const t=db.tests.find(x=>x.id===testId),rows=resultData(testId);
+ if(!rows.length){toast('برای این آزمون هنوز نتیجه‌ای ثبت نشده است.');return;}
+ const headers=Object.keys(rows[0]);
+ const csv='\ufeff'+[headers,...rows.map(r=>headers.map(h=>r[h]))].map(row=>row.map(csvEscape).join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`IQNova-${(t?.title||'آزمون').replace(/[^\w\u0600-\u06FF-]+/g,'_')}-results.csv`;a.click();
+ setTimeout(()=>URL.revokeObjectURL(a.href),500);toast('فایل CSV آماده شد.');
+}
+function loadXLSX(){
+ if(window.XLSX)return Promise.resolve(window.XLSX);
+ return new Promise((resolve,reject)=>{
+   const existing=document.querySelector('script[data-sheetjs]');
+   if(existing){existing.addEventListener('load',()=>resolve(window.XLSX));existing.addEventListener('error',reject);return;}
+   const sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';sc.async=true;sc.dataset.sheetjs='1';
+   sc.onload=()=>resolve(window.XLSX);sc.onerror=()=>reject(new Error('SheetJS load failed'));document.head.appendChild(sc);
+ });
+}
+async function exportTestExcel(testId){
+ const t=db.tests.find(x=>x.id===testId),rows=resultData(testId);
+ if(!rows.length){toast('برای این آزمون هنوز نتیجه‌ای ثبت نشده است.');return;}
+ try{
+   toast('در حال آماده‌سازی فایل Excel...');
+   const XLSX=await loadXLSX();
+   const ws=XLSX.utils.json_to_sheet(rows);
+   ws['!cols']=Object.keys(rows[0]).map(h=>({wch:Math.max(12,Math.min(28,String(h).length+4))}));
+   const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'نتایج');
+   XLSX.writeFile(wb,`IQNova-${(t?.title||'آزمون').replace(/[^\w\u0600-\u06FF-]+/g,'_')}-results.xlsx`);
+   toast('فایل Excel آماده شد.');
+ }catch(e){console.error(e);toast('ساخت فایل Excel انجام نشد.');}
+}
+function showAttemptDetails(aid){
+ const a=db.attempts.find(x=>x.id===aid),t=db.tests.find(x=>x.id===a?.testId);
+ if(!a||!t)return;
+ const rows=(a.order||t.questionIds||[]).map((qid,i)=>{
+   const q=db.questions.find(x=>x.id===qid);if(!q)return null;
+   const ans=a.answers?.[qid];
+   let given='بی‌پاسخ';
+   if(ans!==undefined&&ans!==''){
+     if(q.type==='mcq'||q.type==='truefalse')given=q.options?.[Number(ans)]??ans;
+     else if(q.type==='multimcq')given=(Array.isArray(ans)?ans:[]).map(x=>q.options?.[Number(x)]??x).join('، ')||'بی‌پاسخ';
+     else given=String(ans);
+   }
+   let correct='—';
+   if(q.type==='mcq'||q.type==='truefalse')correct=q.options?.[Number(Array.isArray(q.correct)?q.correct[0]:q.correct)]??q.correct;
+   else if(q.type==='multimcq')correct=(Array.isArray(q.correct)?q.correct:[]).map(x=>q.options?.[Number(x)]??x).join('، ');
+   else if(q.type==='short')correct=(q.answers||[]).join('، ');
+   const isManual=q.type==='essay';
+   return `<tr><td>${i+1}</td><td>${esc(q.text)}</td><td>${esc(given)}</td><td>${esc(correct)}</td><td>${isManual?'تصحیح دستی':String(given)===String(correct)?'صحیح':'غلط'}</td></tr>`;
+ }).filter(Boolean).join('');
+ openModal(`<h2>جزئیات نتیجه · ${esc(a.first||'')} ${esc(a.last||'')}</h2><p class="muted">${esc(t.title)} · رتبه در زمان نمایش بر اساس درصد و امتیاز</p><div class="stats"><div class="card stat"><strong>${a.percent??0}%</strong><span>درصد</span></div><div class="card stat"><strong>${a.score??0}</strong><span>امتیاز</span></div><div class="card stat"><strong>${a.correct??0}</strong><span>صحیح</span></div><div class="card stat"><strong>${a.wrong??0}</strong><span>غلط</span></div></div><div class="tablewrap" style="margin-top:18px"><table class="table"><tr><th>#</th><th>سؤال</th><th>پاسخ شرکت‌کننده</th><th>پاسخ صحیح</th><th>وضعیت</th></tr>${rows||'<tr><td colspan="5">جزئیات سؤال‌ها موجود نیست.</td></tr>'}</table></div><div class="actions"><button class="btn secondary" type="button" onclick="closeModal()">بستن</button></div>`);
+}
+function showTestResults(testId){
+ const t=db.tests.find(x=>x.id===testId);if(!t)return;
+ const attempts=testResultRows(testId),rows=resultData(testId);
+ const body=rows.length?rows.map((r,i)=>{
+   const a=attempts[i];
+   return `<tr><td><b>${r['رتبه']}</b></td><td>${esc(r['نام'])}</td><td>${esc(r['سن'])}</td><td>${esc(r['پایه'])}</td><td><b>${r['امتیاز']}</b> / ${r['از']}</td><td><b>${r['درصد']}%</b></td><td>${r['صحیح']}</td><td>${r['غلط']}</td><td>${r['بی‌پاسخ']}</td><td>${r['تشریحی']}</td><td>${esc(r['تاریخ'])}</td><td><button class="btn secondary" data-action="attemptDetails" data-id="${a.id}">جزئیات</button></td></tr>`;
+ }).join(''):`<tr><td colspan="12" style="text-align:center">هنوز نتیجه‌ای برای این آزمون ثبت نشده است.</td></tr>`;
+ openModal(`<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap"><div><h2>نتایج آزمون: ${esc(t.title)}</h2><p class="muted">رتبه‌بندی از نفر اول تا آخر بر اساس درصد، سپس امتیاز.</p></div><div class="actions" style="margin:0"><button class="btn primary" data-action="exportExcel" data-id="${testId}">📊 Excel</button><button class="btn secondary" data-action="exportCSV" data-id="${testId}">CSV</button></div></div><div class="tablewrap" style="margin-top:18px"><table class="table"><tr><th>رتبه</th><th>نام</th><th>سن</th><th>پایه</th><th>امتیاز</th><th>درصد</th><th>صحیح</th><th>غلط</th><th>بی‌پاسخ</th><th>تشریحی</th><th>تاریخ</th><th>جزئیات</th></tr>${body}</table></div>`);
+}
+
+function editTest(id){
+ const t=id?db.tests.find(x=>x.id===id):{title:'',description:'',welcome:'خوش آمدید! آماده‌ای؟',category:db.categories[0],difficulty:'متوسط',duration:10,showResult:true,multiple:false,randomQuestions:false,visibility:'public',status:'draft',rules:'پاسخ‌ها را با دقت انتخاب کنید.',questionIds:[]};
+ const cats=db.categories.map(x=>`<option ${x===t.category?'selected':''}>${esc(x)}</option>`).join('');
+ const selectedIds=new Set(t.questionIds||[]);
+ const qs=db.questions.map(q=>`<div class="question-pick" data-question-row="${q.id}"><label style="display:flex;align-items:flex-start;gap:10px;flex:1;cursor:pointer;margin:0!important"><input type="checkbox" name="qs" value="${q.id}" ${selectedIds.has(q.id)?'checked':''}><span><b>${esc(q.text)}</b><small class="muted" style="display:block;margin-top:4px">${typeLabel(q.type)} · ${Number(q.score||1)} امتیاز · ${esc(q.difficulty||'متوسط')}</small></span></label><div class="question-pick-actions"><button type="button" class="btn secondary btn-sm" data-action="editTestQuestion" data-question-id="${q.id}">ویرایش سؤال</button>${selectedIds.has(q.id)?`<button type="button" class="btn danger btn-sm" data-action="removeQuestionFromTest" data-question-id="${q.id}">حذف از آزمون</button>`:''}</div></div>`).join('');
+ openModal(`<h2>${id?'ویرایش آزمون':'ساخت آزمون'}</h2><form id="testForm"><div class="formgrid"><div class="field"><label>عنوان *</label><input name="title" value="${esc(t.title)}" required></div><div class="field"><label>دسته</label><select name="category">${cats}</select></div><div class="field"><label>سطح</label><select name="difficulty"><option ${t.difficulty==='آسان'?'selected':''}>آسان</option><option ${t.difficulty==='متوسط'?'selected':''}>متوسط</option><option ${t.difficulty==='سخت'?'selected':''}>سخت</option></select></div><div class="field"><label>زمان (دقیقه)</label><input name="duration" type="number" min="0" value="${t.duration}"></div><div class="field full"><label>توضیحات</label><textarea name="description">${esc(t.description)}</textarea></div><div class="field full"><label>پیام خوش‌آمدگویی</label><textarea name="welcome">${esc(t.welcome)}</textarea></div><div class="field full"><label>قوانین</label><textarea name="rules">${esc(t.rules)}</textarea></div><div class="field"><label>وضعیت</label><select name="status"><option value="draft" ${t.status==='draft'?'selected':''}>پیش‌نویس</option><option value="published" ${t.status==='published'?'selected':''}>منتشرشده</option><option value="unpublished" ${t.status==='unpublished'?'selected':''}>لغو انتشار</option></select></div><div class="field"><label>دسترسی</label><select name="visibility"><option value="public" ${t.visibility==='public'?'selected':''}>عمومی</option><option value="private" ${t.visibility==='private'?'selected':''}>خصوصی با لینک</option></select></div><div class="field"><label>گزینه‌ها</label><label><input type="checkbox" name="showResult" ${t.showResult!==false?'checked':''}> نمایش نتیجه</label><label><input type="checkbox" name="multiple" ${t.multiple?'checked':''}> چندبار شرکت</label><label><input type="checkbox" name="randomQuestions" ${t.randomQuestions?'checked':''}> تصادفی‌سازی سؤال‌ها</label></div><div class="field full">
+<label>انتخاب سؤال‌ها</label>
+<div class="question-select-head">
+  <div class="muted">از بانک سؤال انتخاب کن یا همین‌جا سؤال جدید بساز.</div>
+  <button type="button" class="btn primary" id="addQuestionFromTest">+ افزودن سؤال جدید</button>
+</div>
+<div class="question-picker" style="max-height:320px;overflow:auto">${qs||'<div class="empty-question">هنوز سؤالی ساخته نشده است. از دکمه «افزودن سؤال جدید» استفاده کن.</div>'}</div>
+<div class="muted" style="margin-top:8px;font-size:12px">برای سؤال‌های اضافه‌شده به این آزمون، از «ویرایش سؤال» برای اصلاح مستقیم و از «حذف از آزمون» برای برداشتن سؤال فقط از همین آزمون استفاده کن.</div>
+</div></div><div class="actions"><button class="btn primary">ذخیره آزمون</button></div></form>`);
+ document.querySelectorAll('[data-action="editTestQuestion"]').forEach(btn=>btn.addEventListener('click',()=>{
+   const qid=btn.dataset.questionId;
+   if(qid) editQuestion(qid,id||null);
+ }));
+ document.querySelectorAll('[data-action="removeQuestionFromTest"]').forEach(btn=>btn.addEventListener('click',async()=>{
+   const qid=btn.dataset.questionId;
+   const q=db.questions.find(x=>x.id===qid);
+   const current=db.tests.find(x=>x.id===id);
+   if(!qid||!current||!Array.isArray(current.questionIds)||!current.questionIds.includes(qid)) return;
+   if(!confirm(`سؤال «${String(q?.text||'').slice(0,80)}${(q?.text||'').length>80?'…':''}» فقط از این آزمون حذف شود؟\n\nخود سؤال در «بانک سؤال» باقی می‌ماند و می‌توانی بعداً دوباره آن را به آزمون اضافه کنی.`)) return;
+   current.questionIds=current.questionIds.filter(x=>x!==qid);
+   await persistContent();
+   editTest(id);
+   toast('سؤال از این آزمون حذف شد.');
+ }));
+ document.getElementById('addQuestionFromTest')?.addEventListener('click',()=>{
+   // اگر آزمون هنوز ذخیره نشده، ابتدا آن را به‌صورت پیش‌نویس ذخیره می‌کنیم
+   // تا سؤال جدید بتواند مستقیماً به همین آزمون متصل شود.
+   const f=document.getElementById('testForm');
+   const fd=new FormData(f);
+   const currentId=id||uid('test');
+   let obj=db.tests.find(x=>x.id===currentId);
+   if(!obj){
+     obj={id:currentId,title:fd.get('title')||'آزمون جدید',description:fd.get('description')||'',welcome:fd.get('welcome')||'',rules:fd.get('rules')||'',category:fd.get('category')||db.categories[0]||'',difficulty:fd.get('difficulty')||'متوسط',duration:Number(fd.get('duration')||0),showResult:fd.get('showResult')==='on',multiple:fd.get('multiple')==='on',randomQuestions:fd.get('randomQuestions')==='on',visibility:fd.get('visibility')||'public',status:'draft',questionIds:[]};
+     db.tests.push(obj);
+   }else{
+     obj.title=fd.get('title')||obj.title;
+     obj.description=fd.get('description')||'';
+     obj.welcome=fd.get('welcome')||'';
+     obj.rules=fd.get('rules')||'';
+     obj.category=fd.get('category')||obj.category;
+     obj.difficulty=fd.get('difficulty')||obj.difficulty;
+     obj.duration=Number(fd.get('duration')||0);
+     obj.showResult=fd.get('showResult')==='on';
+     obj.multiple=fd.get('multiple')==='on';
+     obj.randomQuestions=fd.get('randomQuestions')==='on';
+     obj.visibility=fd.get('visibility')||obj.visibility;
+   }
+   saveDB();
+   closeModal();
+   editQuestion(null,currentId);
+});
+document.getElementById('testForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target),ids=f.getAll('qs');if(!ids.length){toast('حداقل یک سؤال انتخاب کن.');return;}let obj=id?db.tests.find(x=>x.id===id):{id:uid('test')};Object.assign(obj,{title:f.get('title'),description:f.get('description'),welcome:f.get('welcome'),rules:f.get('rules'),category:f.get('category'),difficulty:f.get('difficulty'),duration:Number(f.get('duration')||0),showResult:f.get('showResult')==='on',multiple:f.get('multiple')==='on',randomQuestions:f.get('randomQuestions')==='on',visibility:f.get('visibility'),status:f.get('status'),questionIds:ids});if(!id)db.tests.push(obj);saveDB();closeModal();renderAdmin('tests');toast('آزمون ذخیره شد.');});
+}
+function togglePublish(id){const t=db.tests.find(x=>x.id===id);if(!t)return;t.status=t.status==='published'?'unpublished':'published';saveDB();renderAdmin('tests');}
+function duplicateTest(id){const t=db.tests.find(x=>x.id===id);if(!t)return;const n=clone(t);n.id=uid('test');n.title+=' (کپی)';n.status='draft';db.tests.push(n);saveDB();renderAdmin('tests');toast('آزمون تکثیر شد.');}
+function editQuestion(id, returnToTestId=null){
+ const original=id?db.questions.find(x=>x.id===id):null;
+ const q=clone(original||{id:uid('q'),text:'',type:'mcq',options:['گزینه ۱','گزینه ۲','گزینه ۳','گزینه ۴'],correct:[0],score:1,difficulty:'متوسط',image:'',answers:[]});
+ if(q.type==='multiple')q.type='mcq';
+ if(q.type==='numeric')q.type='short';
+ if(q.type==='truefalse'){q.options=['صحیح','غلط'];q.correct=Array.isArray(q.correct)?q.correct:[Number(q.correct??0)];}
+ if(q.type==='mcq'){q.options=(q.options||[]).slice(0,4);while(q.options.length<4)q.options.push('گزینه '+(q.options.length+1));q.correct=Array.isArray(q.correct)?[Number(q.correct[0]??0)]:[Number(q.correct??0)];}
+ if(q.type==='multiselect')q.type='multimcq';
+ if(q.type==='multimcq'){q.options=q.options||['گزینه ۱','گزینه ۲'];if(q.options.length<2)q.options=['گزینه ۱','گزینه ۲'];q.correct=Array.isArray(q.correct)?q.correct:[];}
+ openModal(`<h2>${id?'ویرایش سؤال':'افزودن سؤال جدید'}</h2><p class="muted">نوع سؤال را انتخاب کن؛ فرم پاسخ‌ها به‌صورت خودکار تغییر می‌کند.</p>
+ <form id="questionForm"><div class="formgrid">
+ <div class="field full"><label>متن سؤال *</label><textarea id="qText" required placeholder="متن سؤال را وارد کنید...">${esc(q.text)}</textarea></div>
+ <div class="field"><label>نوع سؤال *</label><select id="qType">
+ <option value="mcq" ${q.type==='mcq'?'selected':''}>چهارگزینه‌ای</option>
+ <option value="multimcq" ${q.type==='multimcq'?'selected':''}>چندگزینه‌ای</option>
+ <option value="truefalse" ${q.type==='truefalse'?'selected':''}>صحیح و غلط</option>
+ <option value="essay" ${q.type==='essay'?'selected':''}>تشریحی</option>
+ <option value="short" ${q.type==='short'?'selected':''}>پاسخ کوتاه</option></select></div>
+ <div class="field"><label>امتیاز</label><input id="qScore" type="number" min="1" value="${Number(q.score||1)}"></div>
+ <div class="field"><label>سطح</label><select id="qDifficulty"><option ${q.difficulty==='آسان'?'selected':''}>آسان</option><option ${q.difficulty==='متوسط'?'selected':''}>متوسط</option><option ${q.difficulty==='سخت'?'selected':''}>سخت</option></select></div>
+ <div class="field full">
+  <label>تصویر سؤال (اختیاری)</label>
+  <div class="question-image-box">
+    <div class="question-image-actions">
+      <button type="button" class="btn secondary" id="pickQuestionImage">🖼️ افزودن تصویر از دستگاه</button>
+      <button type="button" class="btn danger ${q.image?'':'hidden'}" id="removeQuestionImage">حذف تصویر</button>
+      <input id="qImageFile" type="file" accept="image/*" hidden>
+    </div>
+    <div class="muted" style="margin-top:8px;font-size:12px">برای هر سؤال می‌توانی یک تصویر جداگانه از کامپیوتر یا گوشی انتخاب کنی.</div>
+    <div id="qImagePreview" class="question-image-preview">${q.image?`<img src="${esc(q.image)}" alt="پیش‌نمایش تصویر سؤال">`:'<div class="question-image-empty">هنوز تصویری انتخاب نشده است.</div>'}</div>
+  </div>
+</div></div>
+ <div id="answerBuilder"></div><div class="actions"><button type="submit" class="btn primary">ذخیره سؤال</button><button type="button" class="btn secondary" id="cancelQuestion">انصراف</button></div></form>`);
+ const typeEl=document.getElementById('qType'),builder=document.getElementById('answerBuilder');
+ const imageFileEl=document.getElementById('qImageFile');
+ const imagePreviewEl=document.getElementById('qImagePreview');
+ const removeImageBtn=document.getElementById('removeQuestionImage');
+ function refreshQuestionImage(){
+   imagePreviewEl.innerHTML=q.image?`<img src="${esc(q.image)}" alt="پیش‌نمایش تصویر سؤال">`:'<div class="question-image-empty">هنوز تصویری انتخاب نشده است.</div>';
+   removeImageBtn.classList.toggle('hidden',!q.image);
+ }
+ async function imageFileToDataURL(file){
+   if(!file || !file.type.startsWith('image/')){toast('لطفاً یک فایل تصویری انتخاب کن.');return;}
+   if(file.size>8*1024*1024){toast('حجم تصویر اولیه بیشتر از ۸ مگابایت است.');return;}
+   try{
+     const data=await new Promise((resolve,reject)=>{
+       const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);
+     });
+     const img=await new Promise((resolve,reject)=>{
+       const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=data;
+     });
+     const max=1500, scale=Math.min(1,max/Math.max(img.width,img.height));
+     const canvas=document.createElement('canvas');
+     canvas.width=Math.max(1,Math.round(img.width*scale));
+     canvas.height=Math.max(1,Math.round(img.height*scale));
+     const ctx=canvas.getContext('2d');
+     ctx.drawImage(img,0,0,canvas.width,canvas.height);
+     q.image=safeImageUrl(canvas.toDataURL('image/webp',0.88));
+     refreshQuestionImage();
+     toast('تصویر سؤال اضافه شد.');
+   }catch(err){console.error(err);toast('خواندن تصویر انجام نشد.');}
+ }
+ imageFileEl.addEventListener('change',async e=>{
+   await imageFileToDataURL(e.target.files[0]);
+   e.target.value='';
+ });
+ document.getElementById('pickQuestionImage').addEventListener('click',()=>imageFileEl.click());
+ removeImageBtn.addEventListener('click',()=>{q.image='';refreshQuestionImage();});
+
+ function renderAnswerBuilder(){
+   const type=typeEl.value;
+   if(type==='mcq'){
+     q.options=(q.options||[]).slice(0,4);while(q.options.length<4)q.options.push('گزینه '+(q.options.length+1));q.correct=[Number(q.correct?.[0]??0)];
+     builder.innerHTML=`<div class="answer-panel"><div class="answer-title"><b>گزینه‌های چهارگزینه‌ای</b><span class="pill">دقیقاً ۴ گزینه</span></div><div id="optionList"></div><div class="typehint">فقط یک گزینه را به‌عنوان پاسخ صحیح انتخاب کن.</div></div>`;
+   }else if(type==='multimcq'){
+     q.options=q.options||['گزینه ۱','گزینه ۲'];if(q.options.length<2)q.options=['گزینه ۱','گزینه ۲'];q.correct=Array.isArray(q.correct)?q.correct:[];
+     builder.innerHTML=`<div class="answer-panel"><div class="answer-title"><b>گزینه‌های چندگزینه‌ای</b><button type="button" class="btn secondary" id="addOption">+ افزودن گزینه</button></div><div id="optionList"></div><div class="typehint">تعداد گزینه‌ها آزاد است؛ با + گزینه اضافه و با × گزینه حذف کن. می‌توانی چند پاسخ صحیح انتخاب کنی.</div></div>`;
+   }else if(type==='truefalse'){
+     q.options=['صحیح','غلط'];q.correct=[Number(q.correct?.[0]??0)];
+     builder.innerHTML=`<div class="answer-panel"><div class="answer-title"><b>پاسخ سؤال</b><span class="pill">۲ گزینه ثابت</span></div><div id="optionList"></div></div>`;
+   }else if(type==='short'){
+     q.answers=q.answers||[];
+     builder.innerHTML=`<div class="answer-panel"><div class="answer-title"><b>پاسخ‌های قابل قبول</b><span class="pill">تصحیح خودکار</span></div><div class="field"><label>هر پاسخ را در یک خط وارد کن</label><textarea id="shortAnswers" rows="5" placeholder="مثلاً:\n56\n۵۶">${esc(q.answers.join('\n'))}</textarea></div><div class="typehint">اگر پاسخ با یکی از موارد بالا مطابقت داشته باشد، صحیح در نظر گرفته می‌شود.</div></div>`;
+   }else builder.innerHTML=`<div class="answer-panel"><div class="answer-title"><b>پاسخ تشریحی</b><span class="pill">تصحیح دستی</span></div><div class="typehint">دانش‌آموز پاسخ خود را در یک کادر متنی وارد می‌کند و مدیر بعداً آن را نمره‌دهی می‌کند.</div></div>`;
+   renderOptions();
+   document.getElementById('addOption')?.addEventListener('click',()=>{q.options.push('گزینه '+(q.options.length+1));renderOptions();});
+ }
+ function renderOptions(){
+   const list=document.getElementById('optionList');if(!list)return;
+   const type=typeEl.value,opts=type==='truefalse'?['صحیح','غلط']:(q.options||[]);
+   list.innerHTML=opts.map((o,i)=>`<div class="option-editor"><input type="${type==='multimcq'?'checkbox':'radio'}" name="correctOption" ${((q.correct||[]).map(Number).includes(i))?'checked':''} data-correct="${i}"><input class="option-input" data-option-index="${i}" value="${esc(o)}" ${type==='truefalse'?'readonly':''}><button type="button" class="iconbtn red" data-remove-option="${i}" ${type!=='multimcq'||opts.length<=2?'disabled':''}>×</button></div>`).join('');
+   list.querySelectorAll('[data-correct]').forEach(el=>el.addEventListener('change',()=>{
+     const i=Number(el.dataset.correct);
+     if(type==='multimcq'){q.correct=q.correct||[];if(el.checked&&!q.correct.includes(i))q.correct.push(i);if(!el.checked)q.correct=q.correct.filter(x=>x!==i);}
+     else q.correct=[i];
+   }));
+   list.querySelectorAll('.option-input').forEach(el=>el.addEventListener('input',()=>{q.options[Number(el.dataset.optionIndex)]=el.value;}));
+   list.querySelectorAll('[data-remove-option]').forEach(el=>el.addEventListener('click',()=>{const i=Number(el.dataset.removeOption);q.options.splice(i,1);q.correct=(q.correct||[]).filter(x=>x!==i).map(x=>x>i?x-1:x);renderOptions();}));
+ }
+ typeEl.addEventListener('change',()=>{
+   q.type=typeEl.value;
+   if(q.type==='mcq'){q.options=['گزینه ۱','گزینه ۲','گزینه ۳','گزینه ۴'];q.correct=[0];}
+   if(q.type==='multimcq'){q.options=['گزینه ۱','گزینه ۲'];q.correct=[];}
+   if(q.type==='truefalse'){q.options=['صحیح','غلط'];q.correct=[0];}
+   if(q.type==='short'){q.options=[];q.answers=q.answers||[];q.correct=[];}
+   if(q.type==='essay'){q.options=[];q.correct=[];}
+   renderAnswerBuilder();
+ });
+ renderAnswerBuilder();
+ document.getElementById('cancelQuestion').onclick=closeModal;
+ document.getElementById('questionForm').addEventListener('submit',e=>{
+   e.preventDefault();q.text=document.getElementById('qText').value.trim();q.image=safeImageUrl(q.image);q.score=Number(document.getElementById('qScore').value||1);q.difficulty=document.getElementById('qDifficulty').value;
+   if(!q.text){toast('متن سؤال را وارد کن.');return;}
+   if(q.type==='mcq'&&(q.options.length!==4||!q.correct?.length)){toast('چهارگزینه‌ای باید دقیقاً ۴ گزینه و یک پاسخ صحیح داشته باشد.');return;}
+   if(q.type==='multimcq'&&(q.options.length<2||!q.correct?.length)){toast('چندگزینه‌ای حداقل ۲ گزینه و یک پاسخ صحیح لازم دارد.');return;}
+   if(q.type==='truefalse'&&!q.correct?.length){toast('پاسخ صحیح را انتخاب کن.');return;}
+   if(q.type==='short'){q.answers=(document.getElementById('shortAnswers')?.value||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);if(!q.answers.length){toast('حداقل یک پاسخ قابل قبول وارد کن.');return;}}
+   if(id)Object.assign(db.questions.find(x=>x.id===id),q);else db.questions.push(q);
+   if(returnToTestId){
+     const rt=db.tests.find(x=>x.id===returnToTestId);
+     if(rt){
+       rt.questionIds=Array.isArray(rt.questionIds)?rt.questionIds:[];
+       if(!rt.questionIds.includes(q.id))rt.questionIds.push(q.id);
+     }
+   }
+   saveDB();closeModal();
+   if(returnToTestId){
+     editTest(returnToTestId);
+     toast('سؤال ذخیره و به آزمون اضافه شد.');
+   }else{
+     renderAdmin('questions');
+     toast('سؤال با موفقیت ذخیره شد.');
+   }
+ });
+}
+function typeLabel(type){
+ const m={mcq:'چهارگزینه‌ای',multimcq:'چندگزینه‌ای',truefalse:'صحیح و غلط',essay:'تشریحی',short:'پاسخ کوتاه'};
+ return m[type]||type||'سؤال';
+}
+function addCategory(){const name=prompt('نام دسته جدید را وارد کنید:');if(name&&name.trim()){db.categories.push(name.trim());saveDB();renderAdmin('categories');toast('دسته اضافه شد.');}}
+async function changePassword(){
+ if(!isManager()){toast('ابتدا به‌عنوان مدیر وارد شو.');return;}
+ const p=prompt('رمز عبور جدید را وارد کنید (حداقل ۸ کاراکتر):');
+ if(!p||p.length<8){toast('رمز باید حداقل ۸ کاراکتر باشد.');return;}
+ const {error}=await sb.auth.updateUser({password:p});
+ if(error){toast('تغییر رمز انجام نشد: '+error.message);return;}
+ toast('رمز مدیر در Supabase Auth تغییر کرد.');
+}
+function backup(){
+ if(!isManager()){toast('فقط مدیر می‌تواند پشتیبان بگیرد.');return;}
+ const payload={version:3,exportedAt:new Date().toISOString(),data:db};
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='IQNova-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);
+}
+document.getElementById('restoreInput').addEventListener('change',e=>{const file=e.target.files[0];if(!file||!isManager())return;const r=new FileReader();r.onload=async()=>{try{const raw=JSON.parse(r.result),incoming=raw.data||raw;if(!Array.isArray(incoming.tests)||!Array.isArray(incoming.questions)||!Array.isArray(incoming.categories))throw new Error('bad backup');db={...clone(DEFAULTS),...incoming};sanitizeLoadedData();await persistContent();applyTheme();renderHome();renderTests();renderResults();renderAdmin('dashboard');toast('پشتیبان بازیابی و روی سرور ذخیره شد.');}catch(err){console.error(err);toast('فایل پشتیبان معتبر نیست.');}};r.readAsText(file);e.target.value='';});
+
+async function deleteTest(id){if(!isManager())return;const t=db.tests.find(x=>x.id===id);if(!t)return;if(!confirm(`آزمون «${t.title}» حذف شود؟ این عمل آزمون را از محتوای سایت حذف می‌کند.`))return;db.tests=db.tests.filter(x=>x.id!==id);await persistContent();renderAdmin('tests');renderHome();toast('آزمون حذف شد.');}
+async function deleteQuestion(id){if(!isManager())return;const q=db.questions.find(x=>x.id===id);if(!q)return;if(!confirm('این سؤال حذف شود؟'))return;db.questions=db.questions.filter(x=>x.id!==id);db.tests.forEach(t=>t.questionIds=(t.questionIds||[]).filter(x=>x!==id));await persistContent();renderAdmin('questions');toast('سؤال حذف شد.');}
+async function addCategory(){if(!isManager())return;const name=prompt('نام دسته جدید را وارد کنید:');if(name&&name.trim()){db.categories.push(name.trim());await persistContent();renderAdmin('categories');renderHome();toast('دسته اضافه شد.');}}
+async function editCategory(index){if(!isManager())return;const old=db.categories[index];const name=prompt('نام جدید دسته:',old);if(!name||!name.trim()||name.trim()===old)return;db.categories[index]=name.trim();db.tests.forEach(t=>{if(t.category===old)t.category=name.trim();});await persistContent();renderAdmin('categories');renderHome();}
+async function deleteCategory(index){if(!isManager())return;const name=db.categories[index];if(db.tests.some(t=>t.category===name)){toast('ابتدا آزمون‌های این دسته را به دسته دیگری منتقل کن.');return;}if(!confirm(`دسته «${name}» حذف شود؟`))return;db.categories.splice(index,1);await persistContent();renderAdmin('categories');renderHome();}
+
+window.addEventListener('beforeunload',e=>{if(currentAttempt&&!currentAttempt.completed){persistAttempt(currentAttempt);e.preventDefault();e.returnValue='آزمون شما ذخیره شده است.';}});
+initCloud().then(()=>{
+ const linkedTest=new URLSearchParams(window.location.search).get('test');
+ if(linkedTest && db.tests.some(x=>x.id===linkedTest)) openTest(linkedTest);
+});
+
+</script>
+</body>
+</html>
